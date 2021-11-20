@@ -13,14 +13,14 @@ services:
     expose:
       - '3306'
     volumes:
-      - /home/falah/project/script-c/my-data:/var/lib/mysql
+      - $HOME/project/script-c/my-data:/var/lib/mysql
   apps:
     image: apps
     restart: always
     ports:
       - '30000:80'
     volumes:
-      - /home/falah/project/script-c/apps:/var/www/html
+      - $HOME/project/script-c/apps:/var/www/html
 
 volumes:
   my-data:
