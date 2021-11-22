@@ -53,11 +53,11 @@
             <span class="icon-bar"></span>    
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="home.php">Inventory Admin</a> 
+        <a class="navbar-brand" href="superadmin.php">Inventory Admin</a> 
       </div>
       <div style="color: white;padding: 15px 20px 15px 20px;float: right;font-size: 16px;"> 
         <span style="margin-right:20px"><?php echo tglIndonesia(date('D, d F, Y')); ?></span>
-        <a href="home.php?page=logout" class="btn btn-danger square-btn-adjust">Logout</a> 
+        <a href="superadmin.php?page=logout" class="btn btn-danger square-btn-adjust">Logout</a> 
       </div>
     </nav>   
 <!-- /. NAV TOP  -->
@@ -68,19 +68,19 @@
             <img src="img/admin.png" class="user-image img-circle img-responsive" style="width:70px;height:80px;"/>
           </li>
           <li>
-            <a  class="active-menu" href="home.php"><i class="fa fa-dashboard"></i> Dashboard</a>
+            <a  class="active-menu" href="superadmin.php"><i class="fa fa-dashboard"></i> Dashboard</a>
           </li> 
           <li>
             <a  href="#"><i class="fa fa-money"></i> Pembelian<span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
               <li>
-                <a  href="home.php?page=barangpembelian"><i class="fa fa-cube"></i> Data Barang Pembelian</a>
+                <a  href="superadmin.php?page=barangpembelian"><i class="fa fa-cube"></i> Data Barang Pembelian</a>
               </li>
               <li>
-                <a  href="home.php?page=pembelian"><i class="fa fa-database"></i> Data Pembelian</a>
+                <a  href="superadmin.php?page=pembelian"><i class="fa fa-database"></i> Data Pembelian</a>
               </li>
               <li>
-                <a  href="home.php?page=tambahpembelian"><i class="fa fa-plus-square"></i> Tambah Data</a>
+                <a  href="superadmin.php?page=tambahpembelian"><i class="fa fa-plus-square"></i> Tambah Data</a>
               </li>
             </ul>
           </li>
@@ -88,30 +88,30 @@
             <a  href="#"><i class="fa fa-money"></i> Penjualan<span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
               <li>
-                <a  href="home.php?page=penjualan"><i class="fa fa-database"></i> Data Penjualan</a>
+                <a  href="superadmin.php?page=penjualan"><i class="fa fa-database"></i> Data Penjualan</a>
               </li>
               <li>
-                <a  href="home.php?page=tambahpenjualan"><i class="fa fa-plus-square"></i> Tambah Data</a>
+                <a  href="superadmin.php?page=tambahpenjualan"><i class="fa fa-plus-square"></i> Tambah Data</a>
               </li>
             </ul>
           </li>
           <li>
-            <a  href="home.php?page=barang"><i class="fa fa-qrcode"></i> Barang</a>
+            <a  href="superadmin.php?page=barang"><i class="fa fa-qrcode"></i> Barang</a>
           </li>
           <li>
-            <a  href="home.php?page=supplier"><i class="fa fa-group"></i> Supplier</a>
+            <a  href="superadmin.php?page=supplier"><i class="fa fa-group"></i> Supplier</a>
           </li>
           <li>
             <a  href="#"><i class="fa fa-book"></i> Laporan<span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
               <li>
-                <a  href="home.php?page=laporanpenjualan"><i class="fa fa-file-archive-o"></i> Penjualan</a>
+                <a  href="superadmin.php?page=laporanpenjualan"><i class="fa fa-file-archive-o"></i> Penjualan</a>
               </li>
               <li>
-                <a  href="home.php?page=laporanpembelian"><i class="fa fa-file-archive-o"></i> Pembelian</a>
+                <a  href="superadmin.php?page=laporanpembelian"><i class="fa fa-file-archive-o"></i> Pembelian</a>
               </li>
               <li>
-                <a  href="home.php?page=laporanprofit"><i class="fa fa-dollar"></i> Profit</a>
+                <a  href="superadmin.php?page=laporanprofit"><i class="fa fa-dollar"></i> Profit</a>
               </li>
             </ul>
           </li>
@@ -119,10 +119,10 @@
             <a  href="#"><i class="fa fa-wrench"></i> Pengaturan<span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
               <li>
-                <a  href="home.php?page=admin"><i class="fa fa-user"></i> Admin</a>
+                <a  href="superadmin.php?page=admin"><i class="fa fa-user"></i> Admin</a>
               </li>
               <li>
-                <a  href="home.php?page=perusahaan"><i class="fa fa-home"></i> Perusahaan</a>
+                <a  href="superadmin.php?page=importuser"><i class="fa fa-home"></i> Import Users</a>
               </li>
             </ul>
           </li>
@@ -187,8 +187,8 @@
             elseif ($_GET['page']=="laporanprofit") {
               include 'user-list.php';
             }
-            elseif ($_GET['page']=="perusahaan") {
-              include 'user-list.php';
+            elseif ($_GET['page']=="importuser") {
+              include 'form.php';
             }
             elseif ($_GET['page']=="logout") {
               session_destroy();
