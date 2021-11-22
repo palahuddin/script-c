@@ -7,19 +7,15 @@ if(isset($_POST['login'])){
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
-    $sql = "SELECT * FROM users WHERE username=:username OR email=:email";
+    $sql = "SELECT * FROM users WHERE username=:uname OR email=:mail";
     $stmt = $db->prepare($sql);
-    
-    // bind parameter ke query
-    $params = array(
-        ":username" => $username,
-        ":email" => $username
-    );
+    $stmt->BindParam(":uname", $username);
+    $stmt->BindParam(":mail", $username);
+    $stmt->execute();
 
-    $stmt->execute($params);
-
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    $id = $stmt->fetch(PDO::FETCH_ASSOC);
+    $user = $stmt->fetch();
+    $id = $stmt->fetch();
+    $row = $stmt->fetch();
 
     // jika user terdaftar
     if($user){
@@ -27,12 +23,38 @@ if(isset($_POST['login'])){
         if(password_verify($password, $user["password"])){
             // buat Session
             session_start();
-            $_SESSION["user"] = $user;
+            $_SESSION["users"] = $user;
+            $admin = $_SESSION["users"]["admin"];
+            if ($admin == 1){
+                header("Location: home.php");
+            }
+            elseif ($admin == 2){
+                header("Location: superadmin.php");
+            }
+            else {
+                header("Location: welcome.php");
+            }
+
             // login sukses, alihkan ke halaman timeline
-            header("Location: admin.php");
+            
             
         }
     }
+    // $akses = $row['admin'];
+    // session_start();
+    
+    // $_SESSION["users"] = $user;
+
+    
+    // login sukses, alihkan ke halaman timeline
+    // header("Location: home.php");
+    // elseif ($akses = 1 ){
+    //         session_start();
+    //         $_SESSION["users"] = $user;
+    //         // login sukses, alihkan ke halaman timeline
+    //         header("Location: admin.php");
+    // }
+            
 }
 ?>
 

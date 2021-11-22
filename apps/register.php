@@ -13,8 +13,8 @@ if(isset($_POST['register'])){
 
 
     // menyiapkan query
-    $sql = "INSERT INTO users (name, username, email, password) 
-            VALUES (:name, :username, :email, :password)";
+    $sql = "INSERT INTO users (name, username, email, password, admin) 
+            VALUES (:name, :username, :email, :password, '0')";
     $stmt = $db->prepare($sql);
 
     // bind parameter ke query
@@ -41,7 +41,7 @@ if(isset($_POST['register'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register Pesbuk</title>
+    <title>Register Akun</title>
 
     <link rel="stylesheet" href="css/bootstrap.min.css" />
 </head>
