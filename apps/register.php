@@ -4,33 +4,40 @@ require_once("config.php");
 
 if(isset($_POST['register'])){
 
-    // filter data yang diinputkan
-    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-    // enkripsi password
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+    require_once("config.php");
 
+    $Telp = $_POST['Telp'];
+    $ambil=$db->prepare("SELECT * FROM tbregister where telp = '$Telp'");
+    $ambil->execute();
+    $row=$ambil->fetch();
 
-    // menyiapkan query
-    $sql = "INSERT INTO users (name, username, email, password, admin) 
-            VALUES (:name, :username, :email, :password, '0')";
-    $stmt = $db->prepare($sql);
+    if ($row['telp'] === $Telp) { //Check No Telp
+        echo "<script>
+        alert('No. Telp Already Exist!'); 
+            window.location='register.php';
+        </script>"; 
+        $db=null;
+        die ();
+        }
+    
+    $No = "10";
+    $NoPelanggan = sprintf($No . rand(100,999));
+    $Password = $_POST['Password'];
+    $NamaLengkap = $_POST['NamaLengkap'];
+    $Telp = $_POST['Telp'];
 
-    // bind parameter ke query
-    $params = array(
-        ":name" => $name,
-        ":username" => $username,
-        ":password" => $password,
-        ":email" => $email
-    );
-
-    // eksekusi query untuk menyimpan ke database
-    $saved = $stmt->execute($params);
-
-    // jika query simpan berhasil, maka user sudah terdaftar
-    // maka alihkan ke halaman login
-    if($saved) header("Location: login.php");
+    $simpan=$db->prepare("INSERT INTO tbregister (username, password, name, telp, status, level)
+        VALUES ('$NoPelanggan','$Password', '$NamaLengkap', '$Telp', '0', '2')");
+    $simpan->execute();
+    if($simpan->rowCount()==0){
+        echo "Gagal";
+    }
+    else{
+        echo "<script type='text/javascript'>
+        alert('User Berhasil Di Daftarkan!');
+        window.location.href = 'index.php'
+        </script>";
+    }
 }
 
 ?>
@@ -43,7 +50,7 @@ if(isset($_POST['register'])){
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register Akun</title>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 </head>
 <body class="bg-light">
 
@@ -51,31 +58,25 @@ if(isset($_POST['register'])){
     <div class="row">
         <div class="col-md-6">
 
-        <p>&larr; <a href="index.php">Home</a>
 
-        <h4>Bergabunglah bersama ribuan orang lainnya...</h4>
-        <p>Sudah punya akun? <a href="login.php">Login di sini</a></p>
+        <h4>Registrasi Pelanggan Baru</h4>
+        <p>Sudah Jadi Pelanggan? <a href="index.php">Login di sini</a></p>
 
         <form action="" method="POST">
 
             <div class="form-group">
                 <label for="name">Nama Lengkap</label>
-                <input class="form-control" type="text" name="name" placeholder="Nama kamu" />
+                <input class="form-control" type="text" name="NamaLengkap" placeholder="Nama kamu" required />
             </div>
 
             <div class="form-group">
-                <label for="username">Username</label>
-                <input class="form-control" type="text" name="username" placeholder="Username" />
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input class="form-control" type="email" name="email" placeholder="Alamat Email" />
+                <label for="username">No. Handphone</label>
+                <input class="form-control" type="text" name="Telp" placeholder="No. Handhphone" required />
             </div>
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input class="form-control" type="password" name="password" placeholder="Password" />
+                <input class="form-control" type="password" name="Password" placeholder="Password" required />
             </div>
 
             <input type="submit" class="btn btn-success btn-block" name="register" value="Daftar" />
@@ -85,7 +86,7 @@ if(isset($_POST['register'])){
         </div>
 
         <div class="col-md-6">
-            <img class="img img-responsive" src="img/connect.png" />
+            <img class="img img-responsive" src="assets/img/connect.png" />
         </div>
 
     </div>

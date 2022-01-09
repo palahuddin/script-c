@@ -13,9 +13,9 @@
 <div class="container mt-1">
 <div class="header">
 <div style="display:inline-block;vertical-align:top;">
-    <img src="img/connect.png" alt="logo" style="width:100px;height:100px;" />
+    <img src="assets/img/connect.png" alt="logo" style="width:100px;height:100px;" />
 <div style="display:inline-block;">
-    <div><h1> PT. XYZ </h1></div>
+    <div><h1> PLN Pasca Bayar </h1></div>
     <h5>Welcome,<b> <?php echo $_SESSION["users"]["name"] ?></b></h5>
     <p> </p>
     <p> </p>
@@ -28,20 +28,20 @@
 </head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inventory Barang</title>
+    <title>Halaman Pelanggan</title>
   <!-- BOOTSTRAP STYLES-->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="assets/main/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="assets/main/css/font-awesome.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
-    <link href="assets/css/custom.css" rel="stylesheet" />
+    <link href="assets/main/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <!--FOR TABLE -->
-    <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/bootbox.min.js"></script>
+    <link href="assets/main/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="assets/main/js/jquery.js"></script>
+    <script src="assets/main/js/bootstrap.min.js"></script>
+    <script src="assets/main/js/bootbox.min.js"></script>
 </head>
 <body>
   <div id="wrapper">
@@ -53,7 +53,7 @@
             <span class="icon-bar"></span>    
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="home.php">Inventory Admin</a> 
+        <a class="navbar-brand" href="home.php">Pelanggan PLN</a> 
       </div>
       <div style="color: white;padding: 15px 20px 15px 20px;float: right;font-size: 16px;"> 
         <span style="margin-right:20px"><?php echo tglIndonesia(date('D, d F, Y')); ?></span>
@@ -65,64 +65,40 @@
       <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
           <li class="text-center">
-            <img src="img/admin.png" class="user-image img-circle img-responsive" style="width:70px;height:80px;"/>
+            <img src="assets/img/admin.png" class="user-image img-circle img-responsive" style="width:70px;height:80px;"/>
           </li>
           <li>
             <a  class="active-menu" href="home.php"><i class="fa fa-dashboard"></i> Dashboard</a>
           </li> 
           <li>
-            <a  href="#"><i class="fa fa-money"></i> Pembelian<span class="fa arrow"></span></a>
-            <ul class="nav nav-second-level">
-              <li>
-                <a  href="home.php?page=barangpembelian"><i class="fa fa-cube"></i> Data Barang Pembelian</a>
-              </li>
-              <li>
-                <a  href="home.php?page=pembelian"><i class="fa fa-database"></i> Data Pembelian</a>
-              </li>
-              <li>
-                <a  href="home.php?page=tambahpembelian"><i class="fa fa-plus-square"></i> Tambah Data</a>
-              </li>
-            </ul>
+            <a  href="home.php?page=petugas"><i class="fa fa-qrcode"></i> Data Petugas</a>
           </li>
           <li>
-            <a  href="#"><i class="fa fa-money"></i> Penjualan<span class="fa arrow"></span></a>
-            <ul class="nav nav-second-level">
-              <li>
-                <a  href="home.php?page=penjualan"><i class="fa fa-database"></i> Data Penjualan</a>
-              </li>
-              <li>
-                <a  href="home.php?page=tambahpenjualan"><i class="fa fa-plus-square"></i> Tambah Data</a>
-              </li>
-            </ul>
+          <li>
+            <a  href="home.php?page=pelanggan"><i class="fa fa-qrcode"></i> Data Pelanggan</a>
           </li>
           <li>
-            <a  href="home.php?page=barang"><i class="fa fa-qrcode"></i> Barang</a>
+          <li>
+            <a  href="home.php?page=tagihan"><i class="fa fa-qrcode"></i> Data Tagihan</a>
           </li>
           <li>
-            <a  href="home.php?page=supplier"><i class="fa fa-group"></i> Supplier</a>
+          <li>
+            <a  href="home.php?page=pembayaran"><i class="fa fa-qrcode"></i> Data Pembayaran</a>
           </li>
           <li>
-            <a  href="#"><i class="fa fa-book"></i> Laporan<span class="fa arrow"></span></a>
-            <ul class="nav nav-second-level">
-              <li>
-                <a  href="home.php?page=laporanpenjualan"><i class="fa fa-file-archive-o"></i> Penjualan</a>
-              </li>
-              <li>
-                <a  href="home.php?page=laporanpembelian"><i class="fa fa-file-archive-o"></i> Pembelian</a>
-              </li>
-              <li>
-                <a  href="home.php?page=laporanprofit"><i class="fa fa-dollar"></i> Profit</a>
-              </li>
-            </ul>
+          <li>
+            <a  href="home.php?page=tarif"><i class="fa fa-qrcode"></i> Data Tarif</a>
           </li>
           <li>
+
+      
             <a  href="#"><i class="fa fa-wrench"></i> Pengaturan<span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
               <li>
-                <a  href="home.php?page=admin"><i class="fa fa-user"></i> Admin</a>
+                <a  href="home.php?page=edituserlist"><i class="fa fa-user"></i> Edit User</a>
               </li>
               <li>
-                <a  href="home.php?page=perusahaan"><i class="fa fa-home"></i> Perusahaan</a>
+                <a  href="home.php?page=importuser"><i class="fa fa-home"></i> Import Users</a>
               </li>
             </ul>
           </li>
@@ -133,62 +109,62 @@
       <div id="page-inner">
         <?php  
           if (isset($_GET['page'])) {
-            if ($_GET['page']=="admin") {
-              include 'user-list.php';
+            if ($_GET['page']=="tambahpelanggan") {
+              include 'pelanggan/tambah-pelanggan.php';
             }
-            elseif ($_GET['page']=="tambahadmin") {
-              include 'user-list.php';
+            if ($_GET['page']=="editpelanggan") {
+              include 'pelanggan/edit-pelanggan.php';
             }
-            elseif ($_GET['page']=="ubahadmin") {
-              include 'user-list.php';
+            if ($_GET['page']=="deletepelanggan") {
+              include 'pelanggan/delete-pelanggan.php';
             }
-            elseif ($_GET['page']=="barang") {
-              include 'user-list.php';
+            if ($_GET['page']=="savepelanggan") {
+              include 'pelanggan/save-pelanggan.php';
             }
-            elseif ($_GET['page']=="tambahbarang") {
-              include 'user-list.php';
+            elseif ($_GET['page']=="petugas") {
+              include 'petugas/list-petugas.php';
             }
-            elseif ($_GET['page']=="ubahbarang") {
-              include 'user-list.php';
+            if ($_GET['page']=="pelanggan") {
+              include 'pelanggan/list-pelanggan.php';
             }
-            elseif ($_GET['page']=="supplier") {
-              include 'user-list.php';
+            if ($_GET['page']=="pelangganbaru") {
+              include 'pelanggan/list-pelangganbaru.php';
             }
-            elseif ($_GET['page']=="tambahsupplier") {
-              include 'user-list.php';
+            elseif ($_GET['page']=="importuser") {
+              include 'import/form-import_user.php';
             }
-            elseif ($_GET['page']=="ubahsupplier") {
-              include 'user-list.php';
+            elseif ($_GET['page']=="tagihan") {
+              include 'tagihan/cari-tagihan.php';
             }
-            elseif ($_GET['page']=="pembelian") {
-              include 'data-pembelian.php';
+            elseif ($_GET['page']=="listtagihan") {
+              include 'tagihan/list-tagihan.php';
             }
-            elseif ($_GET['page']=="tambahpembelian") {
-              include 'user-list.php';
+            elseif ($_GET['page']=="pembayaran") {
+              include 'pembayaran/input-pembayaran.php';
             }
-            elseif ($_GET['page']=="barangpembelian") {
-              include 'user-list.php';
+            elseif ($_GET['page']=="simpanbayar") {
+              include 'pembayaran/save-pembayaran.php';
             }
-            elseif ($_GET['page']=="simpanbaranggudang") {
-              include 'user-list.php';
+            elseif ($_GET['page']=="simpantagihan") {
+              include 'tagihan/save-tagihan.php';
             }
-            elseif ($_GET['page']=="penjualan") {
-              include 'user-list.php';
+            elseif ($_GET['page']=="detailtagihan") {
+              include 'tagihan/detail-tagihan.php';
             }
-            elseif ($_GET['page']=="tambahpenjualan") {
-              include 'user-list.php';
+            elseif ($_GET['page']=="setstatus") {
+              include 'pembayaran/set-status-pembayaran.php';
             }
-            elseif ($_GET['page']=="laporanpenjualan") {
-              include 'user-list.php';
+            elseif ($_GET['page']=="tarif") {
+              include 'tarif/input-tarif.php';
             }
-            elseif ($_GET['page']=="laporanpembelian") {
-              include 'user-list.php';
+            elseif ($_GET['page']=="simpantarif") {
+              include 'tarif/save-tarif.php';
             }
-            elseif ($_GET['page']=="laporanprofit") {
-              include 'user-list.php';
+            elseif ($_GET['page']=="listtarif") {
+              include 'tarif/list-tarif.php';
             }
-            elseif ($_GET['page']=="perusahaan") {
-              include 'user-list.php';
+            elseif ($_GET['page']=="listbayar") {
+              include 'pembayaran/list-pembayaran.php';
             }
             elseif ($_GET['page']=="logout") {
               session_destroy();
@@ -196,7 +172,17 @@
             }
           }
           else{
-            include 'user-list.php';
+              require_once "config.php";
+              $NoPelanggan = $_SESSION['users']['username'];
+              $ambil=$db->prepare("SELECT * FROM tbpelanggan WHERE NoPelanggan = '$NoPelanggan'");
+              $ambil->execute();
+              $count = $ambil->rowCount();
+              if ($count == 0) {
+                include 'pelanggan/tambah-pelanggan-mandiri.php';
+              } else {
+                include 'pelanggan/tambah-pelanggan-isi.php';
+              }
+            
           }
         ?>  
       </div>
@@ -204,10 +190,10 @@
   </div>
      <!-- /. WRAPPER  -->
     <!-- METISMENU SCRIPTS -->
-    <script src="assets/js/jquery.metisMenu.js"></script>
+    <script src="assets/main/js/jquery.metisMenu.js"></script>
     <!--DATA TABLE-->
-    <script src="assets/js/dataTables/jquery.dataTables.js"></script>
-    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+    <script src="assets/main/js/dataTables/jquery.dataTables.js"></script>
+    <script src="assets/main/js/dataTables/dataTables.bootstrap.js"></script>
     <script>
       $(document).ready(function () {
         $('#tabelku').dataTable();
@@ -224,6 +210,6 @@
       });
     });
     </script>
-    <script src="assets/js/custom.js"></script>
+    <script src="assets/main/js/custom.js"></script>
 </body>
 </html>

@@ -1,4 +1,6 @@
-<?php require_once("auth.php"); ?>
+<?php 
+require_once("auth.php"); 
+?>
 
 
 <!DOCTYPE html>
@@ -9,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Halaman Admin</title>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 </head>
 
 <body class="bg-light">
@@ -17,8 +19,8 @@
 
 <div class="container mt-1">
 <div class="header">
-  <img src="img/connect.png" alt="logo" style="width:50px;height:50px;" />
-  <h1>PT. Faza Teknindo</h1>
+  <img src="assets/img/connect.png" alt="logo" style="width:50px;height:50px;" />
+  <h1>PT. XYZ</h1>
   <p> </p>
   <p> </p>
 
@@ -29,14 +31,14 @@
             <p><a href="logout.php">Logout</a></p>
 
             <style>
-            <?php include 'css/tables.css'; ?>
+            <?php include 'assets/css/tables.css'; ?>
             </style>
 
 
             <?php
                 require_once("config.php");
-                $myid=$_SESSION["users"]["name"];
-                $ambil=$db->prepare("SELECT * FROM users where name='$myid'");
+                $telp = $_SESSION["users"]["telp"];
+                $ambil=$db->prepare("SELECT * FROM tbregister where telp='$telp'");
                 $ambil->execute();
 
                 echo "<table id='users' border= 1'>
@@ -44,18 +46,22 @@
                 <th>Id</th>
                 <th>Full Name</th>
                 <th>Username</th>
-                <th>Email</th>
-                <th>Actions</th>
+                <th>No. Telp</th>
+                <th>Status</th>
                 </tr>";
 
                 while($row=$ambil->fetch())
                 {
                 echo "<tr>";
-                echo "<td>" . $row['kd_admin'] . "</td>";
+                echo "<td>" . $row['kd_user'] . "</td>";
                 echo "<td>" . $row['name'] . "</td>";
                 echo "<td>" . $row['username'] . "</td>";
-                echo "<td>" . $row['email'] . "</td>";
-                echo "<td><a href='request.php?kd_admin=".$row['kd_admin']."'>Request Access</a></td>";
+                echo "<td>" . $row['telp'] . "</td>";
+                $status = $row['status'];
+                if ($status == '0') {
+                    echo "<td><center>" . "Menunggu Approval" . "</td>";
+                    
+                }
                 echo "</tr>";
                 }
                 echo "</table>";

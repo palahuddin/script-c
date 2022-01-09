@@ -218,7 +218,7 @@ max-width:170px;
 
 }
 .active-menu {
-    background-color:#C90000!important;
+    background-color:#2EA7EB!important;
 }
 
 .arrow {
@@ -324,10 +324,10 @@ border:0px solid black;
      
 }
 .navbar-header {
-    background: #A70303;
+    background: #2EA7EB;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-background-color: #B40101;
+background-color: #2EA7EB;
 }
 .navbar-default .navbar-toggle {
 border-color: #fff;

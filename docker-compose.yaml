@@ -9,24 +9,16 @@ services:
       MYSQL_PASSWORD: 'password'
       MYSQL_ROOT_PASSWORD: 'password'
     ports:
-      - '3306:3306'
+      - '33006:3306'
     expose:
       - '3306'
     volumes:
-      - $HOME/project/script-c/my-data:/var/lib/mysql
+      - $PWD/my-data:/var/lib/mysql
   apps:
-    image: apps
+    image: falahalaf/php8
     restart: always
     ports:
       - '30000:80'
     volumes:
-      - $HOME/project/script-c/apps:/var/www/html
-
-volumes:
-  my-data:
-    driver: local
-
-volumes:
-  conf:
-    driver: local
+      - $PWD/apps:/var/www/html
 

@@ -1,9 +1,9 @@
 <?php
 
-$db_host = "172.17.0.1";
+$db_host = "db";
 $db_user = "root";
 $db_pass = "password";
-$db_name = "db";
+$db_name = "listrik";
 
 try {    
     //create PDO connection 
@@ -12,3 +12,5 @@ try {
     //show error
     die("Terjadi masalah: " . $e->getMessage());
 }
+
+

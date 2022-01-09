@@ -1,0 +1,107 @@
+#users {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+width: 100%;
+}
+
+#users td, #users th {
+text-align: left;
+border: 1px solid #ddd;
+padding: 8px;
+}
+
+#users tr:nth-child(even){background-color: #f2f2f2;}
+
+#users tr:hover {background-color: #ddd;}
+
+#users th {
+padding-top: 12px;
+padding-bottom: 12px;
+text-align: center;
+background-color: #2EA7EB;
+color: white;
+}
+
+
+#pelangganbaru {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+width: 50%;
+}
+
+#pelangganbaru td, #pelangganbaru th {
+text-align: left;
+border: 1px solid #ddd;
+padding: 8px;
+}
+
+#pelangganbaru tr:nth-child(even){background-color: #f2f2f2;}
+
+#pelangganbaru tr:hover {background-color: #ddd;}
+
+#pelangganbaru th {
+padding-top: 12px;
+padding-bottom: 12px;
+text-align: center;
+background-color: #2EA7EB;
+color: white;
+}
+
+
+#tarif {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+width: 40%;
+}
+
+#tarif td, #tarif th {
+text-align: center;
+border: 1px solid #ddd;
+padding: 8px;
+}
+
+#tarif tr:nth-child(even){background-color: #f2f2f2;}
+
+#tarif tr:hover {background-color: #ddd;}
+
+#tarif th {
+padding-top: 12px;
+padding-bottom: 12px;
+text-align: center;
+background-color: #2EA7EB;
+color: white;
+}
+
+
+
+#users-2 {
+font-family: Arial, Helvetica, sans-serif;
+border-collapse: collapse;
+width: 30%;
+}
+
+#users-2 td, #users-2 th {
+text-align: left;
+border: 1px solid #ddd;
+padding: 8px;
+}
+
+#users-2 td {
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid #ddd;
+    background-color: #2EA7EB;
+    color: rgb(36, 19, 19);
+    padding: 8px;
+    }
+
+#users-2 tr:nth-child(even){background-color: #f2f2f2;}
+
+#users-2 tr:hover {background-color: #ddd;}
+
+#users-2 th {
+padding-top: 12px;
+padding-bottom: 12px;
+text-align: left;
+color: rgb(36, 19, 19);
+}
