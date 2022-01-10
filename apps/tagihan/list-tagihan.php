@@ -1,7 +1,26 @@
 <style>
 <?php 
 include 'assets/css/tables.css'; 
-require_once("config.php"); ?>
+require_once("config.php"); 
+if (isset($_POST['delete'])) {
+  $KodeTagihan = $_POST['KodeTagihan'];
+
+  $delete=$db->prepare("DELETE FROM tbtagihan WHERE KodeTagihan='$KodeTagihan'");
+  $delete->execute();
+    if($delete){
+      echo "<script>
+        alert('Data Berhasil Didelete');
+        location.href='/superadmin.php?page=tagihan';
+        </script>";
+    } else {
+      echo "<script>
+        alert('Data GAGAL Didelete');
+        location.href='/superadmin.php?page=tagihan';
+        </script>";
+      }
+}
+
+?>
 </style>
 <?php
     $NoPelanggan = $_POST['NoPelanggan'];
@@ -81,6 +100,10 @@ require_once("config.php"); ?>
                     </form>
                     <form method='post' action='/superadmin.php?page=detailtagihan' style='display:inline-block'>
                     <input type='submit' name='detail' value='Detail' />
+                    <input type='hidden' name='KodeTagihan' value=".$row['KodeTagihan']." />
+                    </form >
+                    <form method='post' action='' style='display:inline-block'>
+                    <input type='submit' name='delete' value='Delete' />
                     <input type='hidden' name='KodeTagihan' value=".$row['KodeTagihan']." />
                     </form ></td>"
                     

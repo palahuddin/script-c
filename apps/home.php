@@ -1,5 +1,9 @@
 <?php
   require_once("auth.php");
+  $superadmin = $_SESSION["users"]["level"];
+  if ($superadmin != 2) {
+    header("Location: index.php");
+  }
   function tglIndonesia($str){
     $tr   = trim($str);
     $str    = str_replace(array('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'), array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum\'at', 'Sabtu', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'), $tr);
@@ -71,14 +75,6 @@
             <a  class="active-menu" href="home.php"><i class="fa fa-dashboard"></i> Dashboard</a>
           </li> 
           <li>
-            <a  href="home.php?page=petugas"><i class="fa fa-qrcode"></i> Data Petugas</a>
-          </li>
-          <li>
-          <li>
-            <a  href="home.php?page=pelanggan"><i class="fa fa-qrcode"></i> Data Pelanggan</a>
-          </li>
-          <li>
-          <li>
             <a  href="home.php?page=tagihan"><i class="fa fa-qrcode"></i> Data Tagihan</a>
           </li>
           <li>
@@ -88,19 +84,6 @@
           <li>
           <li>
             <a  href="home.php?page=tarif"><i class="fa fa-qrcode"></i> Data Tarif</a>
-          </li>
-          <li>
-
-      
-            <a  href="#"><i class="fa fa-wrench"></i> Pengaturan<span class="fa arrow"></span></a>
-            <ul class="nav nav-second-level">
-              <li>
-                <a  href="home.php?page=edituserlist"><i class="fa fa-user"></i> Edit User</a>
-              </li>
-              <li>
-                <a  href="home.php?page=importuser"><i class="fa fa-home"></i> Import Users</a>
-              </li>
-            </ul>
           </li>
       </div>      
     </nav>  
@@ -134,34 +117,28 @@
               include 'import/form-import_user.php';
             }
             elseif ($_GET['page']=="tagihan") {
-              include 'tagihan/cari-tagihan.php';
+              include 'tagihan/list-tagihan-pelanggan.php';
             }
             elseif ($_GET['page']=="listtagihan") {
               include 'tagihan/list-tagihan.php';
             }
             elseif ($_GET['page']=="pembayaran") {
-              include 'pembayaran/input-pembayaran.php';
+              include 'pembayaran/input-pembayaran-pelanggan.php';
             }
             elseif ($_GET['page']=="simpanbayar") {
-              include 'pembayaran/save-pembayaran.php';
+              include 'pembayaran/save-pembayaran-pelanggan.php';
             }
             elseif ($_GET['page']=="simpantagihan") {
               include 'tagihan/save-tagihan.php';
-            }
-            elseif ($_GET['page']=="detailtagihan") {
-              include 'tagihan/detail-tagihan.php';
             }
             elseif ($_GET['page']=="setstatus") {
               include 'pembayaran/set-status-pembayaran.php';
             }
             elseif ($_GET['page']=="tarif") {
-              include 'tarif/input-tarif.php';
+              include 'tarif/list-tarif-pelanggan.php';
             }
             elseif ($_GET['page']=="simpantarif") {
               include 'tarif/save-tarif.php';
-            }
-            elseif ($_GET['page']=="listtarif") {
-              include 'tarif/list-tarif.php';
             }
             elseif ($_GET['page']=="listbayar") {
               include 'pembayaran/list-pembayaran.php';

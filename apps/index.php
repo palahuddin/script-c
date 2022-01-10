@@ -48,7 +48,7 @@ if(isset($_POST['login'])) { // mengecek apakah form variabelnya ada isinya
             } elseif ($login['level'] == 1){
                 session_start();
                 $_SESSION["users"] = $login; // set sesion dengan variabel login
-                header("Location: petugas.php");
+                header("Location: superadmin.php");
             } else {
                 session_start();
                 $_SESSION["users"] = $login; // set sesion dengan variabel login

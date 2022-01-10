@@ -1,7 +1,7 @@
 #users {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-width: 100%;
+width: 80%;
 }
 
 #users td, #users th {
@@ -15,6 +15,30 @@ padding: 8px;
 #users tr:hover {background-color: #ddd;}
 
 #users th {
+padding-top: 12px;
+padding-bottom: 12px;
+text-align: center;
+background-color: #2EA7EB;
+color: white;
+}
+
+#petugas {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+width: 70%;
+}
+
+#petugas td, #petugas th {
+text-align: left;
+border: 1px solid #ddd;
+padding: 8px;
+}
+
+#petugas tr:nth-child(even){background-color: #f2f2f2;}
+
+#petugas tr:hover {background-color: #ddd;}
+
+#petugas th {
 padding-top: 12px;
 padding-bottom: 12px;
 text-align: center;

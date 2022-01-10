@@ -45,7 +45,6 @@ $row = $ambil->fetch();
     <input value="<?=$row['Telp'];?>" type="text" id="lname" name="Telp" required placeholder="No. Handphone" readonly >
     </br>
 
-    <p>&larr; <a href="/superadmin.php?page=pelanggan">Kembali</a>
   </form>
   
 </div>

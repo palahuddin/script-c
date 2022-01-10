@@ -1,5 +1,10 @@
 <?php
   require_once("auth.php");
+  $superadmin = $_SESSION["users"]["level"];
+  if ($superadmin == 2)  {
+    header("Location: index.php");
+  }
+
   function tglIndonesia($str){
     $tr   = trim($str);
     $str    = str_replace(array('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'), array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum\'at', 'Sabtu', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'), $tr);
@@ -89,19 +94,25 @@
           <li>
             <a  href="superadmin.php?page=tarif"><i class="fa fa-qrcode"></i> Data Tarif</a>
           </li>
-          <li>
+            <?php 
+            $level = $_SESSION['users']['level'];
+            if ($level == 0) {
+            ?>
 
-      
-            <a  href="#"><i class="fa fa-wrench"></i> Pengaturan<span class="fa arrow"></span></a>
-            <ul class="nav nav-second-level">
               <li>
-                <a  href="superadmin.php?page=edituserlist"><i class="fa fa-user"></i> Edit User</a>
-              </li>
-              <li>
-                <a  href="superadmin.php?page=importuser"><i class="fa fa-home"></i> Import Users</a>
-              </li>
-            </ul>
-          </li>
+              <a  href="#"><i class="fa fa-wrench"></i> Pengaturan<span class="fa arrow"></span></a>
+              <ul class="nav nav-second-level">
+                <li>
+                  <a  href="superadmin.php?page=edituserlist"><i class="fa fa-user"></i> Edit User</a>
+                </li>
+                <li>
+                  <a  href="superadmin.php?page=importuser"><i class="fa fa-home"></i> Import Users</a>
+                </li>
+              </ul>
+            </li>
+
+            <?php } ?>
+
       </div>      
     </nav>  
     <!-- /. NAV SIDE  -->
@@ -123,6 +134,9 @@
             }
             elseif ($_GET['page']=="petugas") {
               include 'petugas/list-petugas.php';
+            }
+            elseif ($_GET['page']=="tambahpetugas") {
+              include 'petugas/tambah-petugas.php';
             }
             if ($_GET['page']=="pelanggan") {
               include 'pelanggan/list-pelanggan.php';

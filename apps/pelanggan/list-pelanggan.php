@@ -2,15 +2,17 @@
 if (isset($_POST['delete'])) {
   require_once("config.php");
   $id = $_POST['KodePelanggan'];
-  $edit=$db->prepare("DELETE from tbpelanggan where KodePelanggan=$id");
-  $edit->execute();
 
-  if($edit->rowCount()==0){
-    echo "Gagal";
-  }
-  else{
+  try {
+    $delete=$db->prepare("DELETE from tbpelanggan where KodePelanggan=$id");
+    $delete->execute();
     echo "<script type='text/javascript'>
     alert('Pelanggan Berhasil Di Delete');
+    window.location.href = '/superadmin.php?page=pelanggan'
+    </script>";
+  } catch (PDOException $error) {
+    echo "<script type='text/javascript'>
+    alert('Gagal Delete Pelanggan!');
     window.location.href = '/superadmin.php?page=pelanggan'
     </script>";
   }

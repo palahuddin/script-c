@@ -1,54 +1,68 @@
-
-
 <?php 
-
-if (isset($_POST['edit'])) {
-
+require_once "auth.php";
+if (isset($_POST['save'])) {
 
 require_once("config.php");
+$No = "99";
+$NoPelanggan = sprintf($No . rand(100,999));
+$NamaLengkap = $_POST['name'];
+$Telp = $_POST['telp'];
+$Password = $_POST['password'];
 
-$uid = $_POST['kd_admin'];
-$ambil=$db->prepare("SELECT * FROM tblogin where kd_admin = '$uid'");
-$ambil->execute();
-$row=$ambil->fetch();
+$simpan=$db->prepare("INSERT INTO tblogin (username, password, name, level, telp, photo)
+    VALUES ('$NoPelanggan', '$Password', '$NamaLengkap', '1', '$Telp', 'default.svg')");
+$simpan->execute();
+  $count = $simpan->rowCount();
+  if ($count == 0) {
+    echo "<script type='text/javascript'>
+      alert('Pelanggan Gagal Di Tambah');
+      window.location.href = '/superadmin.php?page=petugas'
+      </script>";
+  } else {
+    echo "<script type='text/javascript'>
+      alert('Pelanggan Berhasil Di Tambah');
+      window.location.href = '/superadmin.php?page=petugas'
+      </script>";
+  }
+$db=null;
 }
 ?>
+
+
 
 <style>
 <?php include 'assets/css/form.css'; ?>
 </style>
 
-<h3>Input Data Petugas Baru</h3>
+<h3>Input Petugas Baru</h3>
+<p>
 <div>
 
-  <form action="/superadmin.php?page=saveuser" method="post">
-    <label for="username">Username</label>
+  <form action="" method="post">
+    <label for="username">Nama Petugas</label>
     <br>
-    <input value="<?php echo $row['username'] ?>" type="text" id="fname" name="username" placeholder="Username" >
+    <input value="" type="text" id="fname" name="name" required placeholder="Nama Lengkap" >
     </br>
-    <label for="username">Password</label>
+    <label for="level">Level Akses</label>
     <br>
-    <input value="<?php echo $row['password'] ?>" type="password" id="fname" name="password" placeholder="Password" >
-    </br>
-    <label for="fullname">Nama Lengkap</label>
-    <br>
-    <input value="<?php echo $row['name'] ?>" type="text" id="fname" name="name" placeholder="Nama Lengkap" >
-    </br>
-    <label for="email">Email</label>
-    <br>
-    <input value="<?php echo $row['email'] ?>" type="text" id="lname" name="email" placeholder="Email" >
-    </br>
-    <label for="level">Level</label>
-    <br>
-    <select id="level" name="level">
-      <option value="admin">Admin</option>
-      <option value="petugas">Petugas</option>
+    <select id="KodeTarif" required name="KodeTarif">
+    <option disable value="">-- Pilih Level Akses --</option>
+    <option  value="0">Superadmin</option>
+    <option  value="1">Petugas</option>
     </select>
     </br>
+    <label for="email">No. Handphone</label>
+    <br>
+    <input value="" type="text" id="lname" name="telp" required placeholder="No. Handphone" >
+    </br>
+    <label for="fullname">Password</label>
+    <br>
+    <input value="" type="password" id="fname" name="password" required placeholder="Password" >
+    </br>
+
     <input  type="submit" id=red name=save value="Save"> 
-    <input  type="submit" name=cancel value="Cancel">
+    <p>&larr; <a href="/superadmin.php?page=pelanggan">Kembali</a>
   </form>
-  <!-- <form action="home.php?page=profil" method="post"> <input  type="submit" name=cancel value="Cancel"> </form> -->
   
 </div>
 
