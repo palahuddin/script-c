@@ -1,26 +1,12 @@
 <?php
+require_once("lib/controller.php");
+$cmd = new petugas();
+
 if (isset($_POST['delete'])) {
   require_once("config.php");
   $id = $_POST['kd_user'];
-
-  try {
-    $delete=$db->prepare("DELETE from tblogin where kd_user=$id");
-    $delete->execute();
-    echo "<script type='text/javascript'>
-    alert('Petugas Berhasil Di Delete');
-    window.location.href = '/superadmin.php?page=petugas'
-    </script>";
-  } catch (PDOException $error) {
-    echo "<script type='text/javascript'>
-    alert('Gagal Delete Petugas!');
-    window.location.href = '/superadmin.php?page=petugas'
-    </script>";
-  }
-
-  $db=null;
-
+  $cmd->delete_petugas($id);
 }
-
 
 ?>
             <style>
@@ -38,13 +24,9 @@ if (isset($_POST['delete'])) {
 
             <?php } ?>
 
-            
-
             <?php
-                require_once("config.php");
-
-                $ambil=$db->prepare("SELECT * FROM tblogin WHERE level = '1' ");
-                $ambil->execute();
+                $rows = $cmd->petugas("1");
+                
                 echo "<br> </br>";
                 echo "<table id='petugas' border= 1'>
                 <tr>
@@ -58,11 +40,9 @@ if (isset($_POST['delete'])) {
                         echo "<th>Actions</th>
                             </tr>";
                     }
-                
 
-                while($row=$ambil->fetch())
+                foreach($rows as $row )
                 {
-
                 echo "<tr>";
                 echo "<td><center>" . $row['kd_user'] . "</td>";
                 echo "<td>" . $row['username'] . "</td>";

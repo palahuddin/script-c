@@ -101,16 +101,16 @@ if (isset($_POST['delete'])) {
                     <form method='post' action='/superadmin.php?page=detailtagihan' style='display:inline-block'>
                     <input type='submit' name='detail' value='Detail' />
                     <input type='hidden' name='KodeTagihan' value=".$row['KodeTagihan']." />
-                    </form >
-                    <form method='post' action='' style='display:inline-block'>
+                    </form >";
+                $level = $_SESSION['users']['level'];
+                if ($level == 0){ 
+                echo "<form method='post' action='' style='display:inline-block'>
                     <input type='submit' name='delete' value='Delete' />
                     <input type='hidden' name='KodeTagihan' value=".$row['KodeTagihan']." />
-                    </form ></td>"
-                    
-                    ;
+                    </form ></td>";
+                  }
                 echo "</tr>";
                 }
-                
                 echo "</table>";
                 $db=null;
             ?>      

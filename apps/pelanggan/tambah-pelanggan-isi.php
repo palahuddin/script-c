@@ -1,12 +1,12 @@
 <?php 
 
 require_once "auth.php";
-require_once("config.php");
+require_once("lib/controller.php");
+$cmd = new ambil();
 
 $NoPelanggan = $_SESSION['users']['username'];
-$ambil=$db->prepare("SELECT * FROM tbpelanggan WHERE NoPelanggan = '$NoPelanggan'");
-$ambil->execute();
-$row = $ambil->fetch();
+$row = $cmd->select("tbpelanggan","NoPelanggan","=$NoPelanggan");
+foreach ($row as $row){
 ?>
 
 
@@ -49,4 +49,4 @@ $row = $ambil->fetch();
   
 </div>
 
-
+<? } ?>

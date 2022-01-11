@@ -1,42 +1,22 @@
 <?php 
-
+require_once "auth.php";
+require_once("lib/controller.php");
+$cmd = new pelanggan();
 
 if (isset($_POST['edit'])) {
-  require_once("config.php");
   $uid = $_POST['KodePelanggan'];
-  $ambil=$db->prepare("SELECT * FROM tbpelanggan p JOIN tbtarif t ON p.KodeTarif = t.KodeTarif where KodePelanggan = '$uid'");
-  $ambil->execute();
-  $row=$ambil->fetch();
+  $row = $cmd->edit_pelanggan($uid);
   }
 
 
 if (isset($_POST['save'])) {
-require_once("config.php");
-$NoPelanggan=$_POST['NoPelanggan'];
-$NoMeter=$_POST['NoMeter'];
-$NamaLengkap=$_POST['NamaLengkap'];
-$Alamat=$_POST['Alamat'];
-$Telp=$_POST['Telp'];
-$KodeTarif=$_POST['KodeTarif'];
-
-$edit=$db->prepare("UPDATE tbpelanggan set
-    NoMeter='$NoMeter', NamaLengkap='$NamaLengkap', NamaLengkap='$NamaLengkap', Alamat='$Alamat', Telp='$Telp', KodeTarif='$KodeTarif' 
-    where NoPelanggan='$NoPelanggan'");
-    $edit->execute();
-    if($edit->rowCount()==0){
-      echo "<script type='text/javascript'>
-      alert('Gagal di Update');
-      window.location.href = '/superadmin.php?page=pelanggan'
-      </script>";
-    }
-    else{
-      echo "<script type='text/javascript'>
-      alert('Data Pelanggan Berhasil di Update');
-      window.location.href = '/superadmin.php?page=pelanggan'
-      </script>";
-    }
-
-    $db=null;
+  $NoPelanggan=$_POST['NoPelanggan'];
+  $NoMeter=$_POST['NoMeter'];
+  $NamaLengkap=$_POST['NamaLengkap'];
+  $Alamat=$_POST['Alamat'];
+  $Telp=$_POST['Telp'];
+  $KodeTarif=$_POST['KodeTarif'];
+  $cmd->save_pelanggan($NoMeter,$NamaLengkap,$Alamat,$Telp,$KodeTarif,$NoPelanggan);
 }
 ?>
 
@@ -49,6 +29,7 @@ $edit=$db->prepare("UPDATE tbpelanggan set
 <div>
 
   <form action="" method="post">
+    
     <label for="fullname">No. Pelanggan</label>
     <br>
     <input value="<?php echo $row['NoPelanggan'] ?>" type="text" id="fname" name="NoPelanggan" placeholder="No Pelanggan " readonly >
@@ -79,10 +60,9 @@ $edit=$db->prepare("UPDATE tbpelanggan set
     <select id="KodeTarif" required name="KodeTarif">
       <option disable value="">-- Pilih Daya / Tarif --</option>
       <?php 
-     require_once "config.php";
-     $ambil=$db->prepare("SELECT * FROM tbtarif");
-     $ambil->execute();
-      while($row = $ambil->fetch()){
+      $cmd = new ambil();
+      $rows = $cmd->select("tbtarif","KodeTarif","!=0");
+      foreach($rows as $row) {
           $tarif = $row['TarifPerKwh'];
           $beban = $row['Beban'];
           $tarifformat = number_format($tarif,0,'.','.');

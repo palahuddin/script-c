@@ -14,7 +14,7 @@
                 <th>Kode Tarif</th>
                 <th>Daya</th>
                 <th>Tarif Per-Kwh</th>
-                <th>Beban</th>
+                <th>Biaya Admin</th>
                 </tr>";
 
                 while($row=$ambil->fetch())
@@ -24,7 +24,7 @@
                 echo "<td>" . $row['KodeTarif'] . "</td>";
                 echo "<td>" . $row['Daya'] . " Watt" . "</td>";
                 echo "<td>" ."Rp ". number_format($row['TarifPerKwh']) . "</td>";
-                echo "<td>" . $row['Beban'] . "</td>";
+                echo "<td>" ."Rp ". number_format( $row['BiayaAdmin']) . "</td>";
                 echo "</tr>";
                 }
                 echo "</table>";

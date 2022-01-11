@@ -1,38 +1,12 @@
 <?php
+require_once "auth.php";
+require_once("lib/controller.php");
+$cmd = new pelanggan();
+
 if (isset($_POST['approve'])) {
-  require_once("config.php");
   $id = $_POST['kd_user'];
-  
-  $ambil=$db->prepare("SELECT * FROM tbregister where kd_user=$id");
-  $ambil->execute();
-  $row = $ambil->fetch();
-
-  $ambil=$db->prepare("UPDATE tbregister SET status='1' where kd_user=$id");
-  $ambil->execute();
-
-  $username = $row['username'];
-  $password = $row['password'];
-  $name = $row['name'];
-  $telp = $row['telp'];
-
-  $simpan=$db->prepare("INSERT INTO tblogin (username, password, name, level, telp, photo)
-        VALUES ('$username', '$password', '$name', '3', '$telp', 'default.svg')");
-  $simpan->execute();
-      if($simpan->rowCount()==0){
-      echo "Gagal";
-      }
-      else{
-      echo "<script type='text/javascript'>
-      alert('Pelanggan Berhasil Di Tambah');
-      window.location.href = '/superadmin.php?page=pelangganbaru'
-      </script>";
-      }
-
-  $db=null;
-
+  $cmd->pelanggan_baru($id);
 }
-
-
 ?>
             <style>
             <?php include 'assets/css/tables.css'; ?>
@@ -43,10 +17,8 @@ if (isset($_POST['approve'])) {
                 <input  type='submit' name='submit' value='+ Tambah Pelanggan'>
             </form>
             <?php
-                require_once("config.php");
-
-                $ambil=$db->prepare("SELECT * FROM tbregister");
-                $ambil->execute();
+                $cmd = new ambil();
+                $rows = $cmd->select("tbregister","kd_user","!=0");
                 echo "<br> </br>";
                 echo "<table id='pelangganbaru' border= 1'>
                 <tr>
@@ -57,7 +29,7 @@ if (isset($_POST['approve'])) {
                 <th>Actions</th>
                 </tr>";
 
-                while($row=$ambil->fetch())
+                foreach($rows as $row)
                 {
 
                 echo "<tr>";

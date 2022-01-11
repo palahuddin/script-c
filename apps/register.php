@@ -1,43 +1,17 @@
 <?php
 
-require_once("config.php");
-
+require 'lib/controller.php';
+$cmd = new account();
 if(isset($_POST['register'])){
 
-    require_once("config.php");
-
     $Telp = $_POST['Telp'];
-    $ambil=$db->prepare("SELECT * FROM tbregister where telp = '$Telp'");
-    $ambil->execute();
-    $row=$ambil->fetch();
-
-    if ($row['telp'] === $Telp) { //Check No Telp
-        echo "<script>
-        alert('No. Telp Already Exist!'); 
-            window.location='register.php';
-        </script>"; 
-        $db=null;
-        die ();
-        }
-    
     $No = "10";
     $NoPelanggan = sprintf($No . rand(100,999));
     $Password = $_POST['Password'];
     $NamaLengkap = $_POST['NamaLengkap'];
-    $Telp = $_POST['Telp'];
 
-    $simpan=$db->prepare("INSERT INTO tbregister (username, password, name, telp, status, level)
-        VALUES ('$NoPelanggan','$Password', '$NamaLengkap', '$Telp', '0', '2')");
-    $simpan->execute();
-    if($simpan->rowCount()==0){
-        echo "Gagal";
-    }
-    else{
-        echo "<script type='text/javascript'>
-        alert('User Berhasil Di Daftarkan!');
-        window.location.href = 'index.php'
-        </script>";
-    }
+    $cmd->check_no($Telp,"tbregister","register.php");
+    $cmd->register($NoPelanggan,$Password,$NamaLengkap,$Telp);
 }
 
 ?>

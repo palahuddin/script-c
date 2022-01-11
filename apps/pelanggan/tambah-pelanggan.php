@@ -1,8 +1,10 @@
 <?php 
 require_once "auth.php";
+require_once("lib/controller.php");
+$cmd = new pelanggan();
+
 if (isset($_POST['save'])) {
 
-require_once("config.php");
 $No = "10";
 $NoPelanggan = sprintf($No . rand(100,999));
 $NoMeter = $_POST['NoMeter'];
@@ -11,34 +13,8 @@ $NamaLengkap = $_POST['NamaLengkap'];
 $Telp = $_POST['Telp'];
 $Alamat = $_POST['Alamat'];
 
-$simpan=$db->prepare("INSERT INTO tbpelanggan (NoPelanggan, NoMeter, KodeTarif, NamaLengkap, Telp, Alamat)
-      VALUES ('$NoPelanggan', '$NoMeter', '$KodeTarif', '$NamaLengkap', '$Telp', '$Alamat')");
-$simpan->execute();
-$count = $simpan->rowCount();
-if($count == 0){
-  echo "<script type='text/javascript'>
-  alert('Pelanggan Gagal Di Tambah');
-  window.location.href = '/superadmin.php?page=tambahpelanggan'
-  </script>";
-}
-else{
-  $simpan=$db->prepare("INSERT INTO tblogin (username, password, name, level, telp, photo)
-      VALUES ('$NoPelanggan', 'asd', '$NamaLengkap', '2', '$Telp', 'default.svg')");
-  $simpan->execute();
-  $count = $simpan->rowCount();
-  if ($count == 0) {
-    echo "<script type='text/javascript'>
-      alert('Pelanggan Gagal Di Tambah');
-      window.location.href = '/superadmin.php?page=tambahpelanggan'
-      </script>";
-  } else {
-    echo "<script type='text/javascript'>
-      alert('Pelanggan Berhasil Di Tambah');
-      window.location.href = '/superadmin.php?page=pelanggan'
-      </script>";
-  }
-}
-$db=null;
+$cmd->insert_pelanggan_login($NoPelanggan,$NoMeter,$KodeTarif,$NamaLengkap,$Telp,$Alamat,"superadmin");
+
 }
 ?>
 
@@ -62,10 +38,9 @@ $db=null;
     <select id="KodeTarif" required name="KodeTarif">
       <option disable value="">-- Pilih Tarif --</option>
       <?php 
-     require_once "config.php";
-     $ambil=$db->prepare("SELECT * FROM tbtarif");
-     $ambil->execute();
-      while($row = $ambil->fetch()){
+     $cmd = new ambil();
+     $rows = $cmd->select("tbtarif","KodeTarif","!=0");
+     foreach($rows as $row){
           $tarif = $row['TarifPerKwh'];
           $beban = $row['Beban'];
           $tarifformat = number_format($tarif,0,'.','.');

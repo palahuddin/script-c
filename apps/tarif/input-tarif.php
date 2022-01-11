@@ -19,9 +19,9 @@
     <br>
     <input value="" type="text" id="fname" name="TarifPerKwh" placeholder="Tarif Per Kwh" >
     </br>
-    <label for="BuktiPembayaran">Beban</label>
+    <label for="BuktiPembayaran">Biaya Admin</label>
     <br>
-    <input value="" type="text" id="lname" name="Beban" placeholder="Beban" >
+    <input value="" type="text" id="lname" name="BiayaAdmin" placeholder="Biaya Admin" >
     </br>
     
     <input  type="submit" id=red name=save value="Save"> 

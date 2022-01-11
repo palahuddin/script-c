@@ -28,8 +28,8 @@ if (isset($_POST['save'])) {
     $row=$simpan->fetch();
     
     $tarif = $row['TarifPerKwh'];
-    $beban = $row['Beban'];
-    $TotalBayar = ($JumlahPemakaian * $tarif) + $beban;
+    $BiayaAdmin = $row['BiayaAdmin'];
+    $TotalBayar = ($JumlahPemakaian * $tarif) + $BiayaAdmin;
     return $TotalBayar;
     }
     $TotalBayar = cariTotalBayar($JumlahPemakaian);

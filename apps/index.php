@@ -1,67 +1,14 @@
 <?php 
-include 'config.php'; // panggil perintah koneksi database 
-
 if(!isset($_SESSION['username'] )== 0) { // cek session apakah kosong(belum login) maka alihkan ke index.php
     header('Location: index.php');
 }
 
+require 'lib/controller.php';
+$cmd = new account();
 if(isset($_POST['login'])) { // mengecek apakah form variabelnya ada isinya
     $username = $_POST['username']; // isi varibel dengan mengambil data username pada form
     $password = $_POST['password']; // isi variabel dengan mengambil data password pada form
-
-    $sql = "SELECT * FROM  tbregister WHERE username = :username OR telp = :username AND password = :password";
-    $stmt = $db->prepare($sql); 
-    $stmt->bindParam(':username', $username);
-    $stmt->bindParam(':password', $password);
-    $stmt->execute(); // jalankan query
-    $login = $stmt->fetch();
-    
-    $count = $stmt->rowCount();
-    if ($count == 1){
-        if ($login['status'] == 0){
-            session_start();
-            $_SESSION["users"] = $login; // set sesion dengan variabel login
-            header("Location: welcome.php");
-        } elseif ($login['status'] == 1){
-            session_start();
-            $_SESSION["users"] = $login; // set sesion dengan variabel login
-            header("Location: home.php");
-        } else {
-            echo "<script type='text/javascript'>
-            alert('Login Gagal!');
-            window.location.href = 'index.php'
-            </script>";
-        }
-    } else {
-        $sql = "SELECT * FROM  tblogin WHERE username = :username OR telp = :username AND password = :password"; // buat queri select
-        $stmt = $db->prepare($sql); 
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':password', $password);
-        $stmt->execute(); // jalankan query
-        $login = $stmt->fetch();
-        $count = $stmt->rowCount(); // mengecek row
-        if ($count == 1) { // jika rownya ada 
-            if ($login['level'] == 0){
-                session_start();
-                $_SESSION["users"] = $login; // set sesion dengan variabel login
-                header("Location: superadmin.php");
-            } elseif ($login['level'] == 1){
-                session_start();
-                $_SESSION["users"] = $login; // set sesion dengan variabel login
-                header("Location: superadmin.php");
-            } else {
-                session_start();
-                $_SESSION["users"] = $login; // set sesion dengan variabel login
-                header("Location: home.php");
-            }       
-                
-        }else{
-            echo "<script type='text/javascript'>
-            alert('Login Gagal!');
-            window.location.href = 'index.php'
-            </script>";
-        }
-    }
+    $cmd->login($username,$password);
 }
 ?>
 <!DOCTYPE html>

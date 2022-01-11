@@ -1,7 +1,7 @@
 <?php
   require_once("auth.php");
-  $superadmin = $_SESSION["users"]["level"];
-  if ($superadmin == 2)  {
+  $level = $_SESSION["users"]["level"];
+  if ($level == 2 ) {
     header("Location: index.php");
   }
 
@@ -154,7 +154,7 @@
               include 'tagihan/list-tagihan.php';
             }
             elseif ($_GET['page']=="pembayaran") {
-              include 'pembayaran/input-pembayaran.php';
+              include 'pembayaran/list-pembayaran.php';
             }
             elseif ($_GET['page']=="simpanbayar") {
               include 'pembayaran/save-pembayaran.php';

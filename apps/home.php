@@ -1,9 +1,11 @@
 <?php
   require_once("auth.php");
-  $superadmin = $_SESSION["users"]["level"];
-  if ($superadmin != 2) {
-    header("Location: index.php");
-  }
+  include "lib/controller.php";
+  
+  $cmd = new check_login ();
+  $username = $_SESSION['users']['username'];
+  $cmd->select($username);
+
   function tglIndonesia($str){
     $tr   = trim($str);
     $str    = str_replace(array('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'), array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum\'at', 'Sabtu', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'), $tr);
@@ -108,7 +110,7 @@
               include 'petugas/list-petugas.php';
             }
             if ($_GET['page']=="pelanggan") {
-              include 'pelanggan/list-pelanggan.php';
+              include 'pelanggan/tambah-pelanggan-isi.php';
             }
             if ($_GET['page']=="pelangganbaru") {
               include 'pelanggan/list-pelangganbaru.php';

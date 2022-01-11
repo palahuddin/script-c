@@ -1,16 +1,17 @@
-
-
 <?php 
+require_once("lib/controller.php");
+$cmd = new pembayaran();
+
 
 if (isset($_POST['detail'])) {
-
-
-require_once("config.php");
-
 $kode = $_POST['KodeTagihan'];
-$ambil=$db->prepare("SELECT * FROM tbtagihan join tbpelanggan using(NoPelanggan) where KodeTagihan= '$kode'");
-$ambil->execute();
-$row=$ambil->fetch();
+$row = $cmd->detail_tagihan($kode);
+}
+
+if (isset($_POST['save'])){
+  $Status = $_POST['Status'];
+  $KodeTagihan  =$_POST['KodeTagihan'];
+  $cmd->set_status($Status,$KodeTagihan);
 }
 ?>
 
@@ -22,7 +23,7 @@ $row=$ambil->fetch();
 <p>
 <div>
 
-  <form action="/superadmin.php?page=setstatus" method="post">
+  <form action="" method="post">
   <input type="hidden" name="KodeTagihan" value="<?php echo $row['KodeTagihan'] ?>">
     <label for="fullname">No. Tagihan</label>
     <br>

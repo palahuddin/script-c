@@ -1,3 +1,37 @@
+
+<?php
+require_once "auth.php";
+
+if (isset($_POST['save'])) {
+  $KodeTagihan = $_POST['KodeTagihan'];
+  $TglBayar = $_POST['TglBayar'];
+  $JumlahTagihan = $_POST['JumlahTagihan'];
+  $BuktiPembayaran = $_POST['BuktiPembayaran'];
+  $Status = "Belum";
+
+  require_once("config.php");
+  $simpan=$db->prepare("INSERT into tbpembayaran (KodeTagihan, TglBayar, JumlahTagihan, BuktiPembayaran, Status )
+          VALUES('$KodeTagihan','$TglBayar','$JumlahTagihan','$BuktiPembayaran','$Status')");
+      $simpan->execute();
+      if($simpan){
+          echo "<script type='text/javascript'>
+              alert('Input Pembayaran Berhasil');
+              window.location.href = '/home.php?page=pembayaran'
+          </script>";
+      }
+      $db=null;
+
+
+}
+?>
+
+
+<?php   include "config.php";
+        $ambil=$db->prepare("SELECT * FROM tbtagihan");
+        $ambil->execute();
+        while ($row = $ambil->fetch())
+        {
+?>
 <style>
 <?php include 'assets/css/form.css'; ?>
 </style>
@@ -9,22 +43,15 @@
 </br>
 <div>
 
-  <form action="/superadmin.php?page=simpanbayar" method="post">
+  <form action="" method="post">
     <label for="NoTagihan">No. Tagihan</label>
     <br>
 
     <select id="country" name="KodeTagihan">
     <option value="">--Pilih No. Tagihan--</option>
-      <?php 
-        require_once("config.php");
-        $ambil=$db->prepare("SELECT * FROM tbtagihan");
-        $ambil->execute();
-        while ($row=$ambil->fetch())
-        {
-        ?>
      <option value="<?=$row['KodeTagihan']; ?>"><?=$row['NoTagihan']; ?></option>
-        <?php } ?>
     </select>
+    <?php } ?>
     </br>
     <label for="TglBayar">Tanggal Bayar</label>
     <br>

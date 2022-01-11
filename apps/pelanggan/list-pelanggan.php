@@ -1,26 +1,12 @@
 <?php
+require_once "auth.php";
+require_once("lib/controller.php");
+$cmd = new pelanggan();
+
 if (isset($_POST['delete'])) {
-  require_once("config.php");
   $id = $_POST['KodePelanggan'];
-
-  try {
-    $delete=$db->prepare("DELETE from tbpelanggan where KodePelanggan=$id");
-    $delete->execute();
-    echo "<script type='text/javascript'>
-    alert('Pelanggan Berhasil Di Delete');
-    window.location.href = '/superadmin.php?page=pelanggan'
-    </script>";
-  } catch (PDOException $error) {
-    echo "<script type='text/javascript'>
-    alert('Gagal Delete Pelanggan!');
-    window.location.href = '/superadmin.php?page=pelanggan'
-    </script>";
-  }
-
-  $db=null;
-
+  $cmd->delete_pelanggan($id);
 }
-
 
 ?>
             <style>
@@ -32,10 +18,7 @@ if (isset($_POST['delete'])) {
                 <input  type='submit' name='submit' value='+ Tambah Pelanggan'>
             </form>
             <?php
-                require_once("config.php");
-
-                $ambil=$db->prepare("SELECT * FROM tbpelanggan p JOIN tbtarif t ON p.KodeTarif = t.KodeTarif");
-                $ambil->execute();
+                $rows = $cmd->pelanggan();
                 echo "<br> </br>";
                 echo "<table id='users' border= 1'>
                 <tr>
@@ -49,7 +32,7 @@ if (isset($_POST['delete'])) {
                 <th>Actions</th>
                 </tr>";
 
-                while($row=$ambil->fetch())
+                foreach($rows as $row )
                 {
 
                 echo "<tr>";

@@ -3,9 +3,9 @@ include ("config.php");
 if (isset($_POST['save'])) {
   $Daya = $_POST['Daya'];
   $TarifPerKwh = $_POST['TarifPerKwh'];
-  $Beban = $_POST['Beban'];
+  $BiayaAdmin = $_POST['BiayaAdmin'];
 
-  $simpan=$db->prepare("INSERT INTO tbtarif (Daya, TarifPerKwh, Beban) VALUES('$Daya','$TarifPerKwh','$Beban')");
+  $simpan=$db->prepare("INSERT INTO tbtarif (Daya, TarifPerKwh, BiayaAdmin) VALUES('$Daya','$TarifPerKwh','$BiayaAdmin')");
   $simpan->execute();
     if($simpan){
       echo "<script>

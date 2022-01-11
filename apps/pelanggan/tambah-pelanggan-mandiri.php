@@ -1,8 +1,10 @@
-<?php 
+<?php  
 require_once "auth.php";
+require_once("lib/controller.php");
+$cmd = new pelanggan();
+
 if (isset($_POST['save'])) {
 
-require_once("config.php");
 $NoPelanggan = $_POST['NoPelanggan'];
 $NoMeter = $_POST['NoMeter'];
 $KodeTarif = $_POST['KodeTarif'];
@@ -10,23 +12,7 @@ $NamaLengkap = $_POST['NamaLengkap'];
 $Telp = $_POST['Telp'];
 $Alamat = $_POST['Alamat'];
 
-$simpan=$db->prepare("INSERT INTO tbpelanggan (NoPelanggan, NoMeter, KodeTarif, NamaLengkap, Telp, Alamat)
-      VALUES ('$NoPelanggan', '$NoMeter', '$KodeTarif', '$NamaLengkap', '$Telp', '$Alamat')");
-$simpan->execute();
-$count = $simpan->rowCount();
-if($count == 0){
-  echo "<script type='text/javascript'>
-  alert('Pelanggan Gagal Di Tambah');
-  window.location.href = '/superadmin.php?page=tambahpelanggan'
-  </script>";
-}
-else {
-  echo "<script type='text/javascript'>
-      alert('Pelanggan Berhasil Di Tambah');
-      window.location.href = '/superadmin.php?page=pelanggan'
-      </script>";
-  }
-$db=null;
+$cmd->insert_pelanggan($NoPelanggan,$NoMeter,$KodeTarif,$NamaLengkap,$Telp,$Alamat,"home");
 }
 ?>
 
@@ -50,10 +36,9 @@ $db=null;
     <select id="KodeTarif" required name="KodeTarif">
       <option disable value="">-- Pilih Tarif --</option>
       <?php 
-     require_once "config.php";
-     $ambil=$db->prepare("SELECT * FROM tbtarif");
-     $ambil->execute();
-      while($row = $ambil->fetch()){
+     $cmd = new ambil();
+     $rows = $cmd->select("tbtarif","KodeTarif","!=0");
+     foreach($rows as $row){
           $tarif = $row['TarifPerKwh'];
           $beban = $row['Beban'];
           $tarifformat = number_format($tarif,0,'.','.');
@@ -84,7 +69,7 @@ $db=null;
     </br>
 
     <input  type="submit" id=red name=save value="Save"> 
-    <p>&larr; <a href="/superadmin.php?page=pelanggan">Kembali</a>
+    <p>&larr; <a href="/home.php?page=pelanggan">Kembali</a>
   </form>
   
 </div>

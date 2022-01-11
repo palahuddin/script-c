@@ -10,7 +10,7 @@ require_once("auth.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Halaman Admin</title>
+    <title>Welcome</title>
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 </head>
@@ -21,7 +21,7 @@ require_once("auth.php");
 <div class="container mt-1">
 <div class="header">
   <img src="assets/img/connect.png" alt="logo" style="width:50px;height:50px;" />
-  <h1>PT. XYZ</h1>
+  <h1>PLN Pasca Bayar</h1>
   <p> </p>
   <p> </p>
 

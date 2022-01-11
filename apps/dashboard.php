@@ -1,4 +1,8 @@
-<?php require_once("auth.php"); ?>
+<?php 
+require_once("auth.php"); 
+include 'lib/controller.php';
+$cmd = new petugas();
+?>
 
 <style>
 <?php include 'assets/css/tables.css'; ?>
@@ -14,36 +18,23 @@
 </form>
 <p>
 <?php
-require_once("config.php");
 
-$ambil=$db->prepare("SELECT * FROM tbtarif");
-$ambil->execute();
-$tarif = $ambil->rowCount();
-
-$ambil=$db->prepare("SELECT * FROM tblogin WHERE level = '1'");
-$ambil->execute();
-$petugas = $ambil->rowCount();
-
-$ambil=$db->prepare("SELECT * FROM tbpelanggan");
-$ambil->execute();
-$pelanggan = $ambil->rowCount();
-
-$ambil=$db->prepare("SELECT * FROM tbtagihan");
-$ambil->execute();
-$tagihan = $ambil->rowCount();
-
-$ambil=$db->prepare("SELECT * FROM tbpembayaran");
-$ambil->execute();
-$pembayaran = $ambil->rowCount();
+$tarif = $cmd->dashboard("tbtarif");
+$petugas = $cmd->dashboard("tblogin");
+$pelanggan = $cmd->dashboard("tbpelanggan");
+$tagihan = $cmd->dashboard("tbtagihan");
+$pembayaran = $cmd->dashboard("tbpembayaran");
+$register = $cmd->dashboard("tbregister");
 
 ?>
-<table id="users">
+<table id="petugas">
   <tr><h2>
-    <th><h3>Jumlah Data Tarif</h3></th>
-    <th><h3>Jumlah Data Petugas</h3></th>
-    <th><h3>Jumlah Data Pelanggan</h3></th>
-    <th><h3>Jumlah Data Tagihan</h3></th>
-    <th><h3>Jumlah Data Pembayaran</h3></th>
+    <th><h4>Jumlah Data Tarif</h4></th>
+    <th><h4>Jumlah Data Petugas</h4></th>
+    <th><h4>Jumlah Data Pelanggan</h4></th>
+    <th><h4>Jumlah Data Tagihan</h4></th>
+    <th><h4>Jumlah Data Pembayaran</h4></th>
+    <th><h4>Jumlah Request Pelanggan Baru</h4></th>
   </tr>
   
   <tr>
@@ -52,5 +43,6 @@ $pembayaran = $ambil->rowCount();
   <td><center><h1><?php echo $pelanggan ?></h1></td>
   <td><center><h1><?php echo $tagihan ?></h1></td>
   <td><center><h1><?php echo $pembayaran ?></h1></td>
+  <td><center><h1><?php echo $register ?></h1></td>
   </tr>
 </table>

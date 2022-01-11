@@ -1,30 +1,20 @@
 <?php 
 require_once "auth.php";
+require_once("lib/controller.php");
+
 if (isset($_POST['save'])) {
 
-require_once("config.php");
 $No = "99";
 $NoPelanggan = sprintf($No . rand(100,999));
 $NamaLengkap = $_POST['name'];
 $Telp = $_POST['telp'];
 $Password = $_POST['password'];
 
-$simpan=$db->prepare("INSERT INTO tblogin (username, password, name, level, telp, photo)
-    VALUES ('$NoPelanggan', '$Password', '$NamaLengkap', '1', '$Telp', 'default.svg')");
-$simpan->execute();
-  $count = $simpan->rowCount();
-  if ($count == 0) {
-    echo "<script type='text/javascript'>
-      alert('Pelanggan Gagal Di Tambah');
-      window.location.href = '/superadmin.php?page=petugas'
-      </script>";
-  } else {
-    echo "<script type='text/javascript'>
-      alert('Pelanggan Berhasil Di Tambah');
-      window.location.href = '/superadmin.php?page=petugas'
-      </script>";
-  }
-$db=null;
+$cmd = new account();
+$cmd->check_no($Telp,"tblogin","/superadmin.php?page=tambahpetugas");
+
+$cmd = new petugas();
+$cmd->tambah_petugas($NoPelanggan,$Password,$NamaLengkap,$Telp);
 }
 ?>
 
