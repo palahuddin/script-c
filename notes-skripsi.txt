@@ -1,0 +1,71 @@
+
+
+
+13. Nama: Abdurachman Palahuddin
+       NIM: 11211299
+      Judul: Perancangan Sistem Informasi Penugasan Pekerjaan Serta Absensi Pekerja Lapangan Berbasis Web Menggunakan Lokasi Koordinat Pada CV. Surya Engineering Mandiri
+    Referensi Jurnal:
+    - https://ejournal.bsi.ac.id/ejurnal/index.php/jtk/article/download/10216/pdf
+    - https://ojs.cbn.ac.id/index.php/jukanti/article/view/216/50
+    - https://ejournal.nusamandiri.ac.id/index.php/inti/article/view/1932/789
+
+
+TEMPLATE PROPOSAL SKRIPSI
+
+ 	Penulisan proposal skripsi merupakan salah satu syarat bagi mahasiswa sebelum menyusun skripsi dan Sidang skripsi untuk memperoleh gelar Sarjana. Penulisan proposal ini berguna untuk mendiskusikan materi terkait skripsi yang akan diajukan, kemudian dapat didiskusikan dengan pembimbing terkait topik dan objek penelitian. Template proposal ini menjadi acuan mahasiswa Program Studi Informatika Fakultas Teknologi Informasi Universitas Nusa Mandiri. 
+Proposal skripsi merupakan uraian rencana pelaksanaan penelitian bagi
+mahasiswa Program Studi Informatika Fakultas Teknologi Informasi Universitas Nusa Mandiri. Adapun beberapa hal yang harus diperhatikan perihal, 
+Feasibility study merupakan kelayakan/kemungkinan/latar belakang tema yang
+akan diangkat; 
+Literature review berisi tentang penelitian-penelitian sebelumnya yang mendukung tema yang akan diambil; 
+Time merupakan penjelasan waktu pengerjaan skripsi.
+
+Proposal skripsi memenuhi ketentuan sebagai berikut:
+Jumlah 15 s.d 30 halaman
+Jarak spasi 1.5
+Jenis huruf Times New Roman size 12
+Margin naskah proposal skripsi: 4-3-3-3 (kiri-atas-kanan-bawah)
+Ukuran kertas A4
+Proposal skripsi diupload menjelang pendaftaran skripsi 
+Proposal skripsi terdiri dari 3 (tiga) Bab dengan format sebagai berikut:
+
+HALAMAN SAMPUL
+Ketentuan halaman sampul proposal skripsi yaitu diketik simetris di tengah (center). Judul tidak diperkenankan menggunakan singkatan, kecuali nama atau istilah (contoh: PT, UD, CV) dan tidak disusun dalam kalimat tanya serta tidak perlu ditutup dengan tanda baca apa pun.
+Judul Proposal Skripsi 
+Logo Universitas Nusa Mandiri
+Kata “PROPOSAL SKRIPSI”
+Nama dan NIM
+Program Studi Informatika
+Fakultas Teknologi Informasi
+Universitas Nusa Mandiri
+Tahun disahkannya proposal skripsi dan dituliskan dalam angka dengan
+bentuk empat digit.
+HALAMAN PENGESAHAN
+Merupakan bukti persetujuan pembimbing terhadap rencana pelaksanaan
+penelitian. Halaman ini berisi persetujuan oleh dosen pembimbing, dilengkapi dengan tanda tangan dan tanggal penandatanganan. Tanggal ditulis dengan urutan:
+tanggal, bulan, tahun.
+BAB 1 PENDAHULUAN
+Berisi gambaran  secara singkat mengenai isi proposal skripsi, yang terdiri dari :
+1.1  Latar Belakang Penulisan
+Ditulis persoalan-persoalan yang muncul dan dihadapi, kesenjangan antara keadaan nyata dan keadaan ideal yang diharapkan sehingga melahirkan inti masalah baru yang harus diselesaikan dengan merujuk pada penelitian sebelumnya (dengan mencantumkan sumber-sumber rujukannya). Latar belakang juga memuat uraian makna penting alasan penelitian harus dilaksanakan.
+1.2  Identifikasi Masalah
+Intisari latar belakang dalam bentuk ringkas dan terfokus.
+1.3 Tujuan Penelitian
+ 	    Memuat hal-hal yang akan dicapai setelah penelitian berakhir.
+1.4  Ruang Lingkup Penelitian
+Penegasan bagian masalah yang akan dipecahkan, termasuk asumsi-asumsi yang digunakan.
+1.5 Sistematika Penulisan
+      Urutan secara sistematis dari bab per bab pada proposal skripsi.
+
+BAB 2 LANDASAN TEORI
+Berisi hasil peninjauan kembali dari berbagai sumber pustaka seperti buku, artikel, jurnal atau karya ilmiah lainnya yang memiliki kemiripan antara penelitian yang akan dilakukan dengan penelitian terdahulu.
+2.1  Kerangka Teori
+Berisi teori yang relevan, lengkap, mutakhir dan urut sejalan dengan permasalahan
+2.2  Kerangka Berfikir
+Berisi peta hubungan antar variabel atau teori yang telah dibahas pada penelitian sebelumnya dengan penelitian yang akan dilakukan saat ini 
+2.3 Tinjauan Organisasi/Obyek Penelitian (opsional)
+      Berisi uraian profil dari organisasi atau obyek penelitian 
+
+BAB 3 METODE PENELITIAN
+Pada bab ini, penulis harus menjelaskan secara bertahap dan terperinci tentang langkah-langkah (metodologi) yang digunakannya untuk mencari, mengumpulkan dan menganalisa tema dalam penulisan skripsi. Metodologi dapat berisi tentang alat-alat, pendekatan atau algoritma, serta uraian model yang digunakan sehingga tujuan dari penulisan dapat tercapai. Metodologi ini harus merujuk kepada tujuan penelitian yang ditulis pada Bab I Pendahuluan.
+

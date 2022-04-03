@@ -1,0 +1,3 @@
+FROM falahalaf/php8
+
+cp 

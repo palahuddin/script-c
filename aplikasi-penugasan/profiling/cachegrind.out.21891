@@ -1,0 +1,174 @@
+version: 1
+creator: xdebug 3.1.2 (PHP 8.0.13)
+cmd: /var/www/html/superadmin.php
+part: 1
+positions: line
+
+events: Time_(10ns) Memory_(bytes)
+
+fl=(1) php:internal
+fn=(1) php::session_start
+3 18034 2448
+
+fl=(2) /var/www/html/auth.php
+fn=(2) require_once::/var/www/html/auth.php
+1 3117 0
+cfl=(1)
+cfn=(1)
+calls=1 0 0
+3 18034 2448
+
+fl=(1)
+fn=(3) php::date
+64 25445 888
+
+fl=(1)
+fn=(4) php::trim
+9 154 0
+
+fl=(1)
+fn=(5) php::str_replace
+10 1120 56
+
+fl=(3) /var/www/html/superadmin.php
+fn=(6) tglIndonesia
+8 1432 0
+cfl=(1)
+cfn=(4)
+calls=1 0 0
+9 154 0
+cfl=(1)
+cfn=(5)
+calls=1 0 0
+10 1120 56
+
+fl=(1)
+fn=(7) php::PDO->__construct
+10 467251 43344
+
+fl=(4) /var/www/html/config.php
+fn=(8) require_once::/var/www/html/config.php
+1 17898 296
+cfl=(1)
+cfn=(7)
+calls=1 0 0
+10 467251 43344
+
+fl=(1)
+fn=(9) php::PDO->prepare
+25 2891 720
+
+fl=(1)
+fn=(10) php::PDOStatement->execute
+26 278222 17456
+
+fl=(1)
+fn=(11) php::PDOStatement->fetch
+27 3642 1816
+
+fl=(1)
+fn=(12) php::PDOStatement->rowCount
+28 123 0
+
+fl=(5) /var/www/html/assets/css/tables.css
+fn=(13) include::/var/www/html/assets/css/tables.css
+1 1250 0
+
+fl=(1)
+fn=(9)
+75 1844 720
+
+fl=(1)
+fn=(10)
+76 167726 17456
+
+fl=(1)
+fn=(11)
+89 2304 1816
+
+fl=(1)
+fn=(14) php::number_format
+97 5018 40
+
+fl=(1)
+fn=(11)
+89 46 0
+
+fl=(6) /var/www/html/assets/css/form-bayar.css
+fn=(15) include::/var/www/html/assets/css/form-bayar.css
+1 813 0
+
+fl=(7) /var/www/html/tagihan/list-tagihan.php
+fn=(16) include::/var/www/html/tagihan/list-tagihan.php
+1 193119 0
+cfl=(4)
+cfn=(8)
+calls=1 0 0
+3 485149 43640
+cfl=(1)
+cfn=(9)
+calls=1 0 0
+25 2891 720
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+26 278222 17456
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+27 3642 1816
+cfl=(1)
+cfn=(12)
+calls=1 0 0
+28 123 0
+cfl=(5)
+cfn=(13)
+calls=1 0 0
+42 1250 0
+cfl=(1)
+cfn=(9)
+calls=1 0 0
+75 1844 720
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+76 167726 17456
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+89 2304 1816
+cfl=(1)
+cfn=(14)
+calls=1 0 0
+97 5018 40
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+89 46 0
+cfl=(6)
+cfn=(15)
+calls=1 0 0
+124 813 0
+
+fl=(3)
+fn=(17) {main}
+1 135425 864
+cfl=(2)
+cfn=(2)
+calls=1 0 0
+2 21151 2448
+cfl=(1)
+cfn=(3)
+calls=1 0 0
+64 25445 888
+cfl=(3)
+cfn=(6)
+calls=1 0 0
+64 2706 0
+cfl=(7)
+cfn=(16)
+calls=1 0 0
+154 1142148 61960
+
+summary: 1425800 492816
+

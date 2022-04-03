@@ -1,0 +1,30 @@
+version: 1
+creator: xdebug 3.1.2 (PHP 8.0.13)
+cmd: /var/www/html/index.php
+part: 1
+positions: line
+
+events: Time_(10ns) Memory_(bytes)
+
+fl=(1) php:internal
+fn=(1) php::PDO->__construct
+10 241188 43664
+
+fl=(2) /var/www/html/lib/controller.php
+fn=(2) require::/var/www/html/lib/controller.php
+1 10888 296
+cfl=(1)
+cfn=(1)
+calls=1 0 0
+10 241188 43664
+
+fl=(3) /var/www/html/index.php
+fn=(3) {main}
+1 15326 192
+cfl=(2)
+cfn=(2)
+calls=1 0 0
+6 252077 43960
+
+summary: 290382 399224
+

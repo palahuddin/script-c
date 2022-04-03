@@ -1,0 +1,158 @@
+version: 1
+creator: xdebug 3.1.2 (PHP 8.0.13)
+cmd: /var/www/html/superadmin.php
+part: 1
+positions: line
+
+events: Time_(10ns) Memory_(bytes)
+
+fl=(1) php:internal
+fn=(1) php::session_start
+3 13484 2448
+
+fl=(2) /var/www/html/auth.php
+fn=(2) require_once::/var/www/html/auth.php
+1 2022 0
+cfl=(1)
+cfn=(1)
+calls=1 0 0
+3 13484 2448
+
+fl=(1)
+fn=(3) php::date
+64 16716 888
+
+fl=(1)
+fn=(4) php::trim
+9 84 0
+
+fl=(1)
+fn=(5) php::str_replace
+10 844 56
+
+fl=(3) /var/www/html/superadmin.php
+fn=(6) tglIndonesia
+8 1074 0
+cfl=(1)
+cfn=(4)
+calls=1 0 0
+9 84 0
+cfl=(1)
+cfn=(5)
+calls=1 0 0
+10 844 56
+
+fl=(4) /var/www/html/assets/css/tables.css
+fn=(7) include::/var/www/html/assets/css/tables.css
+1 269 0
+
+fl=(1)
+fn=(8) php::PDO->__construct
+10 266899 43344
+
+fl=(5) /var/www/html/lib/controller.php
+fn=(9) require_once::/var/www/html/lib/controller.php
+1 5925 296
+cfl=(1)
+cfn=(8)
+calls=1 0 0
+10 266899 43344
+
+fl=(1)
+fn=(10) php::PDO->prepare
+19 2127 648
+
+fl=(1)
+fn=(11) php::PDOStatement->execute
+20 1050185 17352
+
+fl=(1)
+fn=(12) php::PDOStatement->fetch
+21 4897 976
+
+fl=(1)
+fn=(12)
+21 361 968
+
+fl=(1)
+fn=(12)
+21 130 0
+
+fl=(5)
+fn=(13) ambil->select
+17 23177 0
+cfl=(1)
+cfn=(10)
+calls=1 0 0
+19 2127 648
+cfl=(1)
+cfn=(11)
+calls=1 0 0
+20 1050185 17352
+cfl=(1)
+cfn=(12)
+calls=1 0 0
+21 4897 976
+cfl=(1)
+cfn=(12)
+calls=1 0 0
+21 361 968
+cfl=(1)
+cfn=(12)
+calls=1 0 0
+21 130 0
+
+fl=(1)
+fn=(14) php::number_format
+28 4818 40
+
+fl=(1)
+fn=(14)
+28 76 32
+
+fl=(6) /var/www/html/pembayaran/list-pembayaran.php
+fn=(15) include::/var/www/html/pembayaran/list-pembayaran.php
+1 53736 0
+cfl=(4)
+cfn=(7)
+calls=1 0 0
+2 269 0
+cfl=(5)
+cfn=(9)
+calls=1 0 0
+7 272824 43640
+cfl=(5)
+cfn=(13)
+calls=1 0 0
+9 1080876 2352
+cfl=(1)
+cfn=(14)
+calls=1 0 0
+28 4818 40
+cfl=(1)
+cfn=(14)
+calls=1 0 0
+28 76 32
+
+fl=(3)
+fn=(16) {main}
+1 54900 1200
+cfl=(2)
+cfn=(2)
+calls=1 0 0
+2 15505 2448
+cfl=(1)
+cfn=(3)
+calls=1 0 0
+64 16716 888
+cfl=(3)
+cfn=(6)
+calls=1 0 0
+64 2003 0
+cfl=(6)
+cfn=(15)
+calls=1 0 0
+157 1412600 1040
+
+summary: 1572673 434936
+
